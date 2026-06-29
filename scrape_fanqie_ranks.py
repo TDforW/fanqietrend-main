@@ -70,10 +70,11 @@ def run_scraper(limit=30, sleep_sec=5):
         page.wait_for_selector('a[href^="/page/"]', timeout=5000)
         
         # 动态解析页面左侧拥有的所有类别目录 (通过匹配对应的榜单路由规律)
+        # 男频新书榜路由格式: /rank/1_1_{category_id}
         categories_js = """
         () => {
             return Array.from(document.querySelectorAll('a'))
-                .filter(a => a.href.includes('/rank/0_1_'))
+                .filter(a => (a.getAttribute('href') || '').includes('/rank/1_1_'))
                 .map(a => ({
                     name: a.innerText.trim(),
                     href: a.getAttribute('href')
