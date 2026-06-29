@@ -2,7 +2,7 @@
 
 [![English](https://img.shields.io/badge/lang-English-blue)](README_EN.md)
 
-> 👗 专注于**番茄小说女频新书榜**，每日自动追踪排行数据并结合 AI 生成趋势分析，部署为精美的在线看板。
+> 👦 专注于**番茄小说男频新书榜**，每日自动追踪排行数据并结合 AI 生成趋势分析，部署为精美的在线看板。
 
 ---
 
@@ -10,7 +10,7 @@
 
 | 功能 | 说明 |
 |------|------|
-| 🕷️ 自动爬取 | 每日定时抓取番茄女性频道各个分类的新书榜 Top 30 |
+| 🕷️ 自动爬取 | 每日定时抓取番茄男性频道各个分类的新书榜 Top 30 |
 | 📊 趋势对比 | 自动对比相邻两天数据：新上榜 / 掉榜 / 排名变化 / 阅读量增长 |
 | 🤖 AI 风向分析 | 接入 OpenAI 兼容 API，按分类生成市场趋势速评 |
 | 🧭 类型风向标 | 独立趋势页聚合多日数据，用 AI 总结古风言情等综合赛道、具体热门分类和高频题材；未配置 API 时自动规则兜底 |
@@ -135,7 +135,7 @@ FanqieRankTracker/
 ├── scripts/
 │   └── build_latest.py         # 趋势对比 + AI 分析构建脚本
 ├── data/
-│   ├── fanqie_female_new_ranks_YYYYMMDD.json  # 每日原始快照
+│   ├── fanqie_male_new_ranks_YYYYMMDD.json  # 每日原始快照
 │   ├── latest_ranks.json       # 最新聚合数据（看板数据源）
 │   ├── market_summary.json     # 全站热点 AI/规则总结
 │   └── trends/
@@ -193,7 +193,7 @@ FanqieRankTracker/
 <details>
 <summary><b>Q: 可以换成男频或其他榜单吗？</b></summary>
 
-可以，修改 `scrape_fanqie_ranks.py` 中的 `init_url` 变量，将 URL 改为目标榜单的地址即可。
+可以，修改 `scrape_fanqie_ranks.py` 中的 `init_url` 变量，将 URL 改为目标榜单的地址即可。当前默认抓取男频新书榜。
 
 </details>
 

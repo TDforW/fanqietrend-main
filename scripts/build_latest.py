@@ -222,22 +222,28 @@ BATCH_SIZE = 3  # 每批合并的分类数
 MARKET_PERIODS = [("7", 7), ("14", 14), ("30", 30), ("all", None)]
 
 GENRE_GROUPS = [
-    {"name": "古风言情", "categories": ["古风世情", "古言脑洞", "宫斗宅斗", "种田"]},
-    {"name": "现代言情", "categories": ["现言脑洞", "豪门总裁", "职场婚恋", "青春甜宠"]},
-    {"name": "幻想言情", "categories": ["玄幻言情", "科幻末世", "悬疑脑洞", "女频悬疑"]},
-    {"name": "快穿衍生", "categories": ["快穿", "女频衍生"]},
-    {"name": "年代民国", "categories": ["年代", "民国言情"]},
-    {"name": "娱乐星光", "categories": ["星光璀璨"]},
-    {"name": "游戏体育", "categories": ["游戏体育"]},
+    {"name": "玄幻仙侠", "categories": ["传统玄幻", "西方奇幻", "东方仙侠", "玄幻脑洞"]},
+    {"name": "都市生活", "categories": ["都市日常", "都市修真", "都市高武", "都市种田", "都市脑洞"]},
+    {"name": "历史军事", "categories": ["历史古代", "历史脑洞", "抗战谍战"]},
+    {"name": "奇思妙想", "categories": ["科幻末世", "悬疑脑洞", "战神赘婿"]},
+    {"name": "悬疑灵异", "categories": ["悬疑灵异"]},
+    {"name": "游戏竞技", "categories": ["游戏体育"]},
+    {"name": "二次元衍生", "categories": ["动漫衍生", "男频衍生"]},
 ]
 
 MARKET_KEYWORDS = [
-    "重生", "穿书", "快穿", "系统", "空间", "团宠", "萌宝", "幼崽", "女配", "炮灰",
-    "反派", "权臣", "宅斗", "宫斗", "和离", "替嫁", "逃荒", "种田", "美食", "经商",
-    "年代", "七零", "八零", "军婚", "豪门", "总裁", "真假千金", "先婚后爱", "追妻",
-    "甜宠", "双洁", "强制爱", "无CP", "末世", "废土", "天灾", "囤货", "异能",
-    "国运", "星际", "修仙", "玄学", "无限流", "悬疑", "直播", "综艺", "娱乐圈",
-    "校园", "暗恋", "青梅竹马", "民国", "兽世", "远古", "基建",
+    "重生", "穿越", "系统", "金手指", "无敌", "赘婿", "逆袭",
+    "修仙", "修真", "练气", "筑基", "渡劫", "飞升", "仙侠", "仙帝",
+    "都市", "神医", "兵王", "战神", "龙婿", "打脸", "装逼",
+    "玄幻", "斗气", "武道", "武魂", "血脉", "觉醒", "天赋",
+    "末世", "废土", "天灾", "异能", "进化", "丧尸", "求生",
+    "历史", "架空", "争霸", "帝王", "权谋", "谋略", "三国",
+    "抗战", "谍战", "军事", "特工", "间谍",
+    "种田", "经营", "基建", "领主", "荒野", "生存",
+    "悬疑", "探险", "盗墓", "灵异", "诡事", "推理",
+    "游戏", "电竞", "网游", "竞技", "副本", "职业选手",
+    "动漫", "同人", "衍生", "综漫", "二次元",
+    "赘婿", "战神", "奶爸", "回归", "复仇",
 ]
 
 
@@ -711,7 +717,7 @@ def build_market_ai_prompt(payload: dict) -> str:
             f"- 规则兜底: {data['fallback_summary']}"
         )
 
-    return f"""你是一位网文市场编辑，请根据番茄女频新书榜的统计结果，为每个周期生成一段全站热点判断。
+    return f"""你是一位网文市场编辑，请根据番茄男频新书榜的统计结果，为每个周期生成一段全站热点判断。
 
 {chr(10).join(sections)}
 
@@ -960,7 +966,7 @@ def main():
 
     # 查找 JSON 快照文件
     snapshots = sorted(
-        glob.glob(os.path.join(data_dir, "fanqie_female_new_ranks_*.json"))
+        glob.glob(os.path.join(data_dir, "fanqie_male_new_ranks_*.json"))
     )
 
     if not snapshots:
@@ -971,7 +977,7 @@ def main():
     if args.date:
         target_date_compact = args.date.replace("-", "")
         target_path = os.path.join(
-            data_dir, f"fanqie_female_new_ranks_{target_date_compact}.json"
+            data_dir, f"fanqie_male_new_ranks_{target_date_compact}.json"
         )
         if not os.path.exists(target_path):
             print(f"❌ 未找到 {args.date} 的快照文件: {target_path}")
@@ -1112,7 +1118,7 @@ def main():
     date_list = []
     for s in snapshots:
         fname = os.path.basename(s)
-        # fanqie_female_new_ranks_YYYYMMDD.json -> YYYY-MM-DD
+        # fanqie_male_new_ranks_YYYYMMDD.json -> YYYY-MM-DD
         m = re.search(r"(\d{4})(\d{2})(\d{2})", fname)
         if m:
             date_list.append(f"{m.group(1)}-{m.group(2)}-{m.group(3)}")
