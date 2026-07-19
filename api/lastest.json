@@ -1,12 +1,12 @@
 {
-  "date": "2026-07-18",
-  "prev_date": "2026-07-17",
+  "date": "2026-07-19",
+  "prev_date": "2026-07-18",
   "types": [
     {
       "type": "all",
       "url": "api/lastest/all.json",
       "category_count": 19,
-      "book_count": 380
+      "book_count": 360
     },
     {
       "type": "西方奇幻",
@@ -41,7 +41,7 @@
     {
       "type": "历史古代",
       "url": "api/lastest/%E5%8E%86%E5%8F%B2%E5%8F%A4%E4%BB%A3.json",
-      "book_count": 20
+      "book_count": 0
     },
     {
       "type": "战神赘婿",
