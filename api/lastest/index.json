@@ -1,12 +1,12 @@
 {
-  "date": "2026-08-23",
-  "prev_date": "2026-08-22",
+  "date": "2026-08-24",
+  "prev_date": "2026-08-23",
   "types": [
     {
       "type": "all",
       "url": "api/lastest/all.json",
       "category_count": 19,
-      "book_count": 360
+      "book_count": 370
     },
     {
       "type": "西方奇幻",
@@ -51,7 +51,7 @@
     {
       "type": "都市种田",
       "url": "api/lastest/%E9%83%BD%E5%B8%82%E7%A7%8D%E7%94%B0.json",
-      "book_count": 0
+      "book_count": 20
     },
     {
       "type": "传统玄幻",
@@ -61,7 +61,7 @@
     {
       "type": "历史脑洞",
       "url": "api/lastest/%E5%8E%86%E5%8F%B2%E8%84%91%E6%B4%9E.json",
-      "book_count": 20
+      "book_count": 10
     },
     {
       "type": "悬疑脑洞",
